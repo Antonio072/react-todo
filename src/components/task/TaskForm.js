@@ -4,14 +4,17 @@ import { TaskContext } from '../../contexts/TaskContext'
 
 function TaskForm() {
 
-    const { addTask } = useContext(TaskContext)
+    const { dispatch } = useContext(TaskContext)
 
     const [title, setTitle] = useState("")
     const [date, setDate] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addTask(title, date)
+        dispatch({
+            type: 'ADD_TASK',
+            task: {title,date}
+        })
         setTitle('')
         setDate('')
     }
