@@ -8,17 +8,11 @@ function TaskDetail({ task }) {
 
     const { dispatch } = useContext(TaskContext)
 
-
-
-    
-
-
     return (
-        <li class="hover:line-through hover:text-red-600 my-3 px-5  py-3 w-64 " 
+        <li class="hover:line-through border-solid border-b-4 border-white hover:text-red-600 px-5  py-3 min-w-full " 
             onClick={() => dispatch({ type: 'REMOVE_TASK',id:task.id })}>
-            <div>{task.title}</div>
+            <div class="text-lg">{task.title}</div>
             <div>{task.date}</div>
-
         </li>
     )
 }
