@@ -13,12 +13,9 @@ function ThemeContextProvider(props) {
         setState({...state, isLightTheme: !state.isLightTheme})
     }
 
-
     return (
 
         <ThemeContext.Provider value={{ ...state, toggleTheme: toggleTheme }}>
-
-
             {props.children}
         </ThemeContext.Provider>
     )

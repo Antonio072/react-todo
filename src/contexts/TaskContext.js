@@ -1,15 +1,25 @@
-import React, { createContext, useState, useReducer} from 'react'
+import React, { createContext, useState, useReducer, useEffect} from 'react'
 import { taskReducer } from '../components/reducers/taskReducer'
 
 export const TaskContext = createContext()
 
 const TaskContextProvider = (props) =>{
 
-    const [ tasks, dispatch] = useReducer(taskReducer,[])
+    const [ tasks, dispatch] = useReducer(taskReducer,[],()=>{
+        const localData = localStorage.getItem('tasks')
+        return localData ? JSON.parse(localData) : []
+    })
+
+    useEffect(
+        ()=>{
+            localStorage.setItem('tasks' , JSON.stringify(tasks))
+        },
+        [tasks]
+    )
 
 
     return (
-    <TaskContext.Provider value={{tasks, dispatch}}>
+    <TaskContext.Provider value={{tasks, dispatch}}  >
         {props.children}
     </TaskContext.Provider>
     )

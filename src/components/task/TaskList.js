@@ -8,9 +8,11 @@ function TaskList () {
 
     const { tasks } = useContext(TaskContext)
 
+    const { isLightTheme, light, dark } = useContext(ThemeContext)
+    const theme = isLightTheme ? light : dark
 
-    return tasks.length ? 
-    <div>
+    const taskElement =  tasks.length ? 
+    <div >
         <ul>
             {tasks.map(task => 
                     <TasksDetails
@@ -20,10 +22,12 @@ function TaskList () {
         </ul>
     </div>
     :(
-        <div>
-            No hay libros
+        <div  >
+            No hay tareas pendientes
         </div>
     )
+
+    return <div class="flex" style={{ background: theme.ui, color: theme.syntax }}>{taskElement}</div>
 }
 
 

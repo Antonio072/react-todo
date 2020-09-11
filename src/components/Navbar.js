@@ -1,4 +1,7 @@
 import React, { useContext } from 'react'
+
+import ThemeToggle from './ThemeToggle'
+
 import { ThemeContext } from '../contexts/ThemeContext'
 import { TaskContext } from '../contexts/TaskContext'
 
@@ -12,8 +15,10 @@ function Navbar() {
 
     return (
         <nav class=" flex w-full h-auto py-3 flex-col items-center " style={{ background: theme.ui, color: theme.syntax }}>
+               <ThemeToggle/>
             <h1 class="text-3xl">Listas de tareas</h1>
             <p>Quedan {tasks.length}</p>
+
         </nav>
     )
 }

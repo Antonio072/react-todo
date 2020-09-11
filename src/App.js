@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import Navbar from './components/Navbar'
-
-import Task from './components/task'
 import ThemeContextProvider from './contexts/ThemeContext';
-import ThemeToggle from './components/ThemeToggle';
 import TaskContextProvider from './contexts/TaskContext';
+
+import Navbar from './components/Navbar'
 import TaskList from './components/task/TaskList';
 import TaskForm from './components/task/TaskForm';
 
@@ -25,7 +23,7 @@ function App() {
           <TaskForm/>
 
         </TaskContextProvider>
-        <ThemeToggle />
+     
        
       </ThemeContextProvider>
 

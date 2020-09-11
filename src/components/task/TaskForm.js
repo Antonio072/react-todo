@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { TaskContext } from '../../contexts/TaskContext'
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 
 function TaskForm() {
+
+    const { isLightTheme, light, dark } = useContext(ThemeContext)
+    const theme = isLightTheme ? light : dark
 
     const { dispatch } = useContext(TaskContext)
 
@@ -11,6 +15,7 @@ function TaskForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         dispatch({
             type: 'ADD_TASK',
             task: {title,date}
@@ -20,21 +25,21 @@ function TaskForm() {
     }
 
     return (
-        <form class="w-full max-w-sm" onSubmit={handleSubmit}>
-            <div class="flex items-center mb-6">
+        <form class="w-full max-w-sm" onSubmit={handleSubmit} style={{ background: theme.ui, color: theme.syntax }}>
+            <div class="flex items-center mb-6" style={{ background: theme.ui, color: theme.syntax }}>
 
                 <div class="md:w-1/3">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    <label class="block font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Task</label>
                 </div>
 
-                <div class="md:w-2/3">
+                <div class="md:w-2/3" style={{ background: theme.ui, color: theme.syntax }}>
                     <input
-                        class="bg-gray-200 appearance-none border-2 
-                                    border-gray-200 rounded w-full py-2
-                                     px-4 text-gray-700 leading-tight 
-                                     focus:outline-none focus:bg-white 
-                                     focus:border-purple-500"
+                        class=" appearance-none border-2 
+                                   rounded w-full py-2
+                                     px-4 leading-tight 
+                                     focus:outline-none
+                                     "
                         type="text" placeholder="Task title"
                         value={title}
                         onChange={(e) => { setTitle(e.target.value) }} />
@@ -42,18 +47,18 @@ function TaskForm() {
             </div>
 
             <div class="flex items-center mb-6">
-                <div class="md:w-1/3">
+                <div class="md:w-1/3" style={{ background: theme.ui, color: theme.syntax }}>
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Due Date</label>
                 </div>
 
                 <div class="md:w-2/3">
                     <input
-                        class="bg-gray-200 appearance-none border-2 
-                                    border-gray-200 rounded w-full py-2
-                                     px-4 text-gray-700 leading-tight 
-                                     focus:outline-none focus:bg-white 
-                                     focus:border-purple-500"
+                        class="appearance-none border-2 
+                                   rounded w-full py-2
+                                     px-4 
+                                     focus:outline-none 
+                                    focus:border-purple-500"
                         type="date"
                         placeholder="Due date"
                         value={date}

@@ -8,7 +8,7 @@ function ThemeToggle(){
     
     return(
         
-        <button class="btn bg-blue-600 hover:bg-blue-300"onClick={toggleTheme}>Modo oscuro</button>
+        <button class="btn" style={{position:'relative', top:'5%', right:'45%'}} onClick={toggleTheme}>Modo oscuro</button>
     )
 }
 
